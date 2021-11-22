@@ -45,11 +45,13 @@ test('Check that clicking an “Add to Duo” button displays the div with id = 
     
     await (await driver).sleep(3000);
 
-    const botBtn = await (await driver).findElement(By.className('bot-btn'));
+    const botBtn = await (await driver).findElement(By.xpath(" //button[@class='bot-btn'][1]"));
     await botBtn.click();
     await (await driver).sleep(3000);
+
     
-    const displayed = await botBtn.isDisplayed();
+    const playerDiv = await driver.findElement(By.id('player-duo'));
+    const displayed = await playerDiv.isDisplayed();
     
     expect(displayed).toBe(true);
 })
